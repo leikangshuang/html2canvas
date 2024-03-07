@@ -297,7 +297,6 @@ var CanvasRenderer = /** @class */ (function (_super) {
     };
     CanvasRenderer.prototype.renderReplacedElement = function (container, curves, image) {
         if (image && container.intrinsicWidth > 0 && container.intrinsicHeight > 0) {
-            var box = box_sizing_1.contentBox(container);
             var bounds = box_sizing_1.contentBox(container);
             var newWidth = void 0;
             var newHeight = void 0;
@@ -317,7 +316,7 @@ var CanvasRenderer = /** @class */ (function (_super) {
             this.path(path);
             this.ctx.save();
             this.ctx.clip();
-            this.ctx.drawImage(image, 0, 0, container.intrinsicWidth, container.intrinsicHeight, newX, newY, box.width, box.height);
+            this.ctx.drawImage(image, 0, 0, container.intrinsicWidth, container.intrinsicHeight, newX, newY, newWidth, newHeight);
             this.ctx.restore();
         }
     };

@@ -15,6 +15,8 @@ exports.backgroundClip = {
                         return 1 /* PADDING_BOX */;
                     case 'content-box':
                         return 2 /* CONTENT_BOX */;
+                    case 'text':
+                        return 3 /* TEXT */;
                 }
             }
             return 0 /* BORDER_BOX */;

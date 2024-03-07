@@ -2008,6 +2008,8 @@
                             return 1 /* PADDING_BOX */;
                         case 'content-box':
                             return 2 /* CONTENT_BOX */;
+                        case 'text':
+                            return 3 /* TEXT */;
                     }
                 }
                 return 0 /* BORDER_BOX */;
@@ -6831,7 +6833,6 @@
         };
         CanvasRenderer.prototype.renderReplacedElement = function (container, curves, image) {
             if (image && container.intrinsicWidth > 0 && container.intrinsicHeight > 0) {
-                var box = contentBox(container);
                 var bounds = contentBox(container);
                 var newWidth = void 0;
                 var newHeight = void 0;
@@ -6851,7 +6852,7 @@
                 this.path(path);
                 this.ctx.save();
                 this.ctx.clip();
-                this.ctx.drawImage(image, 0, 0, container.intrinsicWidth, container.intrinsicHeight, newX, newY, box.width, box.height);
+                this.ctx.drawImage(image, 0, 0, container.intrinsicWidth, container.intrinsicHeight, newX, newY, newWidth, newHeight);
                 this.ctx.restore();
             }
         };

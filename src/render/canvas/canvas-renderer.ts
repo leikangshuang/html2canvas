@@ -181,8 +181,8 @@ export class CanvasRenderer extends Renderer {
             adorWidth += text.textBounds[xnwi].bounds.width;
         }
         const adorLeft = text.textBounds[0].bounds.left;
-        let adorTop = text.textBounds[0].bounds.top;
-        let adorHeight = text.textBounds[0].bounds.height;
+        const adorTop = text.textBounds[0].bounds.top;
+        const adorHeight = text.textBounds[0].bounds.height;
 
         this.ctx.font = font;
 
@@ -307,8 +307,6 @@ export class CanvasRenderer extends Renderer {
         image: HTMLImageElement | HTMLCanvasElement
     ): void {
         if (image && container.intrinsicWidth > 0 && container.intrinsicHeight > 0) {
-            const box = contentBox(container);
-
             const bounds = contentBox(container);
             let newWidth: number;
             let newHeight: number;
@@ -337,8 +335,8 @@ export class CanvasRenderer extends Renderer {
                 container.intrinsicHeight,
                 newX,
                 newY,
-                box.width,
-                box.height
+                newWidth,
+                newHeight
             );
             this.ctx.restore();
         }
